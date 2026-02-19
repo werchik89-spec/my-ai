@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My AI</title>
+<style>
+body {background:#0f172a;color:white;font-family:Arial;text-align:center;}
+#chat {width:90%;max-width:700px;height:400px;overflow-y:auto;
+border:1px solid #333;padding:10px;margin:20px auto;background:#1e293b;}
+input {width:70%;padding:10px;}
+button {padding:10px;}
+.user {color:#38bdf8;}
+.ai {color:#a78bfa;}
+</style>
+</head>
+<body>
+
+<h1>My AI Chat</h1>
+<div id="chat"></div>
+<input id="input" placeholder="Напиши..." />
+<button onclick="send()">Отправить</button>
+
+<script>
+function send(){
+const input=document.getElementById("input");
+const chat=document.getElementById("chat");
+const text=input.value;
+if(!text)return;
+
+chat.innerHTML+=`<div class='user'>Ты: ${text}</div>`;
+
+let reply="Интересный вопрос.";
+
+if(text.toLowerCase().includes("привет"))
+reply="Привет 👋 Рад тебя видеть!";
+else if(text.toLowerCase().includes("кто ты"))
+reply="Я твой AI-помощник.";
+else if(text.toLowerCase().includes("как дела"))
+reply="У меня отлично! А у тебя?";
+
+chat.innerHTML+=`<div class='ai'>AI: ${reply}</div>`;
+input.value="";
+chat.scrollTop=chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
